@@ -10,6 +10,13 @@ namespace NeoVisualizer.Viewmodels
 {
     public class NEOvm : ObservableObject
     {
+        public NEOvm()
+        {
+            ImagePaths.Add("Resources/Images/asteroid0.jpg");
+            ImagePaths.Add("Resources/Images/asteroid1.jpg");
+            ImagePaths.Add("Resources/Images/asteroid2.jpg");
+        }
+
         public List<NEOModel> NeoList { get; set; } = new List<NEOModel>() {
             new NEOModel() {
                 NameLimited = "test",
@@ -33,5 +40,9 @@ namespace NeoVisualizer.Viewmodels
                 DiameterMin = 75,
                 DiameterMax = 150,
             }};
+
+        public List<string> ImagePaths { get; set; } = new List<string>();
+
+        
     }
 }

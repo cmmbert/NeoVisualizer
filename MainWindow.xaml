@@ -21,14 +21,11 @@
                 <Grid Background="Black">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,10,0,10">
                         <StackPanel.Resources>
-                            <Style TargetType="{x:Type Image}">
-                                <Setter Property="Margin" Value="0,-188,50,0"/>
-                            </Style>
                             <Style TargetType="{x:Type Grid}">
                                 <Setter Property="Margin" Value="100,0,10,10"/>
                             </Style>
                         </StackPanel.Resources>
-                        <Image Height="188" VerticalAlignment="Center" Width="188"/>
+                        <Image Height="188" VerticalAlignment="Center" Width="188" Source="Resources/Images/asteroid1.jpg"/>
                         <StackPanel VerticalAlignment="Center">
                             <Label Content="{Binding NameLimited}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="22"/>
                             <Label Content="Full name" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
