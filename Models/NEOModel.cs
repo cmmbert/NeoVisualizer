@@ -11,7 +11,7 @@ namespace NeoVisualizer.Models
     {
         private string name;
 
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Name
         {
             get => name; set
@@ -23,6 +23,7 @@ namespace NeoVisualizer.Models
 
         public string NameLimited { get; set; }
 
+        public string ImagePath { get; set; }
         public double Magnitude { get; set; }
 
         public double DiameterMin { get; set; }

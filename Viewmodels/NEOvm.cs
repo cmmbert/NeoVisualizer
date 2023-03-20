@@ -12,6 +12,42 @@ namespace NeoVisualizer.Viewmodels
 {
     public class NEOvm : ObservableObject
     {
+
+        public NEOvm()
+        {
+            ImagePaths.Add("/Resources/Images/asteroid0.jpg");
+            ImagePaths.Add("/Resources/Images/asteroid1.jpg");
+            ImagePaths.Add("/Resources/Images/asteroid2.jpg");
+            AddNewCommand = new RelayCommand(AddNew);
+
+            NeoList.Add(new NEOModel()
+            {
+                NameLimited = "test",
+                Name = "test 65151",
+                Id = "61565165",
+                Magnitude = 15,
+                Hazardous = true,
+                FirstObserved = DateTime.Now,
+                LastObserved = DateTime.Now,
+                DiameterMin = 15,
+                DiameterMax = 50,
+                ImagePath = ImagePaths[0]
+            });
+            NeoList.Add(new NEOModel()
+            {
+                NameLimited = "test2",
+                Name = "test 65151",
+                Id = "61565165",
+                Magnitude = 15,
+                Hazardous = false,
+                FirstObserved = DateTime.Now,
+                LastObserved = DateTime.Now,
+                DiameterMin = 75,
+                DiameterMax = 150,
+                ImagePath = ImagePaths[1]
+            });
+        }
+
         public ObservableCollection<NEOModel> NeoList
         {
             get { return neoList; }
@@ -21,37 +57,8 @@ namespace NeoVisualizer.Viewmodels
                 OnPropertyChanged(nameof(NeoList));
             }
         }
-        public ObservableCollection<NEOModel> neoList = new ObservableCollection<NEOModel>() {
-            new NEOModel() {
-                NameLimited = "test",
-                Name = "test 65151",
-                Id = 61565165,
-                Magnitude = 15,
-                Hazardous = true,
-                FirstObserved = DateTime.Now,
-                LastObserved = DateTime.Now,
-                DiameterMin = 15,
-                DiameterMax = 50,
-            },
-            new NEOModel() {
-                NameLimited = "test2",
-                Name = "test 65151",
-                Id = 61565165,
-                Magnitude = 15,
-                Hazardous = false,
-                FirstObserved = DateTime.Now,
-                LastObserved = DateTime.Now,
-                DiameterMin = 75,
-                DiameterMax = 150,
-            }};
+        public ObservableCollection<NEOModel> neoList = new ObservableCollection<NEOModel>();
 
-        public NEOvm()
-        {
-            ImagePaths.Add("Resources/Images/asteroid0.jpg");
-            ImagePaths.Add("Resources/Images/asteroid1.jpg");
-            ImagePaths.Add("Resources/Images/asteroid2.jpg");
-            AddNewCommand = new RelayCommand(AddNew);
-        }
 
         
         public List<string> ImagePaths { get; set; } = new List<string>();
@@ -61,19 +68,8 @@ namespace NeoVisualizer.Viewmodels
 
         public void AddNew()
         {
-            NeoList.Add(new NEOModel()
-            {
-                Name = "new neo",
-                NameLimited = "new",
-                Id = 6464654,
-                Magnitude = 20,
-                Hazardous = false,
-                FirstObserved = DateTime.Now,
-                LastObserved = DateTime.Now,
-                DiameterMin = 25,
-                DiameterMax = 40,
-            });
-            NeoList[0].Name = "nieuwe naam";
+            NeoList = new ObservableCollection<NEOModel>(NASA_API.NasaNeoApi.GetNEOsAsync(01).Result);
+
         }
     }
 }
