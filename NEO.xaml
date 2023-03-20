@@ -6,46 +6,46 @@
       xmlns:local="clr-namespace:NeoVisualizer"
       mc:Ignorable="d" 
       Title="NEO">
-
     <Grid>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,10,0,0">
-            <StackPanel.Resources>
-                <Style TargetType="{x:Type Image}">
-                    <Setter Property="Margin" Value="0,-188,50,0"/>
-                </Style>
-                <Style TargetType="{x:Type Grid}">
-                    <Setter Property="Margin" Value="100,0,10,10"/>
-                </Style>
-            </StackPanel.Resources>
-            <Image Height="188" VerticalAlignment="Center" Width="188"/>
-            <StackPanel VerticalAlignment="Center">
-                <Label Content="NAME" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="22"/>
-                <Label Content="Full name" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="Magnitude: " HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                    <Label Content="15" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+        <Grid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,10,0,0">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Margin" Value="0,-188,50,0"/>
+                    </Style>
+                    <Style TargetType="{x:Type Grid}">
+                        <Setter Property="Margin" Value="100,0,10,10"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Image Height="188" VerticalAlignment="Center" Width="188"/>
+                <StackPanel VerticalAlignment="Center">
+                    <Label Content="NAME" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="22"/>
+                    <Label Content="Full name" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Magnitude: " HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                        <Label Content="15" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="First observed" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                        <Label Content="1936-02-21" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Last observed" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                        <Label Content="2020-06-09" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Hazardous" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                        <Label Content="YES" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                    </StackPanel>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="First observed" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                    <Label Content="1936-02-21" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="Last observed" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                    <Label Content="2020-06-09" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="Hazardous" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                    <Label Content="YES" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                </StackPanel>
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Ellipse Width="337.3" Height="337.3" Fill="RosyBrown"></Ellipse>
+                    <Ellipse Width="150.8" Height="150.8" Fill="AliceBlue"></Ellipse>
+
+                </Grid>
             </StackPanel>
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Ellipse Width="337.3" Height="337.3" Fill="RosyBrown"></Ellipse>
-                <Ellipse Width="150.8" Height="150.8" Fill="AliceBlue"></Ellipse>
-
-            </Grid>
-        </StackPanel>
 
 
-
+        </Grid>
     </Grid>
 </Page>

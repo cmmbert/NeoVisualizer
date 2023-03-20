@@ -8,12 +8,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\asteroid0.jpg" />
+    <None Remove="Resources\Images\asteroid1.jpg" />
+    <None Remove="Resources\Images\asteroid2.jpeg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\asteroid0.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\asteroid1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Images\" />
+    <Resource Include="Resources\Images\asteroid2.jpeg" />
   </ItemGroup>
 
 </Project>

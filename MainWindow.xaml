@@ -14,6 +14,7 @@
     <Window.Resources>
         <local:DateTimeConverter x:Key="DateConverter"/>
         <local:BooleanConverter x:Key="BooleanConverter"/>
+        <BitmapImage x:Key="myImage" UriSource="/Resources/Images/asteroid0.jpg" />
     </Window.Resources>
     <Grid>
         <Grid.Resources>
@@ -25,10 +26,10 @@
                                 <Setter Property="Margin" Value="100,0,10,10"/>
                             </Style>
                         </StackPanel.Resources>
-                        <Image Height="188" VerticalAlignment="Center" Width="188" Source="Resources/Images/asteroid1.jpg"/>
+                        <Image Height="188" VerticalAlignment="Center" Width="188" Source="/Resources/Images/asteroid0.jpg"/>
                         <StackPanel VerticalAlignment="Center">
                             <Label Content="{Binding NameLimited}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="22"/>
-                            <Label Content="Full name" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                            <Label Content="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="Magnitude: " HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
                                 <Label Content="{Binding Magnitude}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
@@ -56,6 +57,11 @@
         </Grid.Resources>
         <ListView ItemsSource="{Binding NeoList}" ItemTemplate="{StaticResource ResourceKey=NEOListItem}" HorizontalContentAlignment="Stretch">
         </ListView>
+
+
+        <Grid Width="150" Height="50" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button Content="Add" Name="AddBtn" Command="{Binding AddNewCommand}"></Button>
+        </Grid>
 
     </Grid>
 </Window>
