@@ -29,8 +29,8 @@ namespace NeoVisualizer.NASA_API
 
             var uri = extendedUrl + apiKey + "&page=" + pageNumber.ToString();
 
-            var response = client.GetAsync(uri).Result;
-            NasaBrowseResponse resp = null;
+            var response = await client.GetAsync(uri);
+            NasaBrowseResponse? resp = null;
             if (response.IsSuccessStatusCode)
             {
                 resp = JsonConvert.DeserializeObject<NasaBrowseResponse>(await response.Content.ReadAsStringAsync());

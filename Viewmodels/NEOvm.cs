@@ -66,9 +66,9 @@ namespace NeoVisualizer.Viewmodels
         public RelayCommand AddNewCommand { get; set; }
 
 
-        public void AddNew()
+        public async void AddNew()
         {
-            NeoList = new ObservableCollection<NEOModel>(NASA_API.NasaNeoApi.GetNEOsAsync(01).Result);
+            NeoList = new ObservableCollection<NEOModel>(await NASA_API.NasaNeoApi.GetNEOsAsync(01));
 
         }
     }
