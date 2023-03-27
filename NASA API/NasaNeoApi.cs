@@ -17,7 +17,7 @@ namespace NeoVisualizer.NASA_API
         private const string extendedUrl = "neo/browse";
         private const string apiKey = "?api_key=4SOS8QU6EbSYdtpvLOhczLz0y7R0fDavh8W6IOF3";
 
-        private static List<string> ImagePaths = new List<string>()
+        private static readonly List<string> ImagePaths = new()
         {
             "/Resources/Images/asteroid0.jpg",
             "/Resources/Images/asteroid1.jpg",
@@ -25,8 +25,10 @@ namespace NeoVisualizer.NASA_API
         };
         public static async Task<List<NEOModel>> GetNEOsAsync(int pageNumber)
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(BaseUrl);
+            HttpClient client = new()
+            {
+                BaseAddress = new Uri(BaseUrl)
+            };
 
             // Add an Accept header for JSON format.
             client.DefaultRequestHeaders.Accept.Add(

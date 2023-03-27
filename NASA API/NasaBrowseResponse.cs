@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace NeoVisualizer.NASA_API
 {
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning disable IDE1006 // Naming Styles
     public class NasaBrowseResponse
     {
+
         public Links links { get; set; }
         public Page page { get; set; }
         public Near_Earth_Objects[] near_earth_objects { get; set; }
@@ -119,6 +122,9 @@ namespace NeoVisualizer.NASA_API
         }
 
     }
+#pragma warning restore IDE1006 // Naming Styles
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+
 }
 
 

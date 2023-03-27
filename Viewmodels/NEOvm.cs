@@ -64,7 +64,7 @@ namespace NeoVisualizer.Viewmodels
             GetPage = new RelayCommand<int>(GetNeos);
         }
 
-        public ObservableCollection<NEOModel> neoList = new ObservableCollection<NEOModel>();
+        public ObservableCollection<NEOModel> neoList = new();
 
         public ObservableCollection<NEOModel> NeoList
         {

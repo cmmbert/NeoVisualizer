@@ -21,9 +21,9 @@ namespace NeoVisualizer.Models
             }
         }
 
-        public string NameLimited { get; set; }
+        public string? NameLimited { get; set; }
 
-        public string ImagePath { get; set; }
+        public string? ImagePath { get; set; }
         public double Magnitude { get; set; }
 
         public double DiameterMin { get; set; }

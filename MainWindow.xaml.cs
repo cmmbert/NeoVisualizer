@@ -26,7 +26,7 @@ namespace NeoVisualizer
             InitializeComponent();
         }
 
-        void txtPageKeyUp(object sender, KeyEventArgs e)
+        void TxtPageKeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
