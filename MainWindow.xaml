@@ -14,12 +14,12 @@
     <Window.Resources>
         <local:DateTimeConverter x:Key="DateConverter"/>
         <local:BooleanConverter x:Key="BooleanConverter"/>
-        <BitmapImage x:Key="myImage" UriSource="/Resources/Images/asteroid0.jpg" />
+        <local:HazardousColorConverter x:Key="HazardousColorConverter"/>
     </Window.Resources>
     <Grid>
         <Grid.Resources>
             <DataTemplate x:Key="NEOListItem">
-                <Grid Background="Black">
+                <Grid Background="{Binding Hazardous, Converter={StaticResource HazardousColorConverter}}">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,10,0,10">
                         <StackPanel.Resources>
                             <Style TargetType="{x:Type Grid}">
@@ -59,8 +59,9 @@
         </ListView>
 
 
-        <Grid Width="150" Height="50" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-            <Button Content="Add" Name="AddBtn" Command="{Binding AddNewCommand}"></Button>
+        <Grid Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+            <Button MinWidth="120" HorizontalAlignment="Right" Content="Next>" Name="NextPageBtn" CommandParameter="{Binding NextPage}" Command="{Binding GetPage}"/>
+            <Button MinWidth="120" HorizontalAlignment="Left" Content="&lt;Previous" Name="PrevPageBtn" CommandParameter="{Binding PreviousPage}" Command="{Binding GetPage}"/>
         </Grid>
 
     </Grid>

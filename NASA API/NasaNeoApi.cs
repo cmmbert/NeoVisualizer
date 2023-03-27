@@ -17,6 +17,12 @@ namespace NeoVisualizer.NASA_API
         private const string extendedUrl = "neo/browse";
         private const string apiKey = "?api_key=4SOS8QU6EbSYdtpvLOhczLz0y7R0fDavh8W6IOF3";
 
+        private static List<string> ImagePaths = new List<string>()
+        {
+            "/Resources/Images/asteroid0.jpg",
+            "/Resources/Images/asteroid1.jpg",
+            "/Resources/Images/asteroid2.jpeg",
+        };
         public static async Task<List<NEOModel>> GetNEOsAsync(int pageNumber)
         {
             HttpClient client = new HttpClient();
@@ -43,6 +49,7 @@ namespace NeoVisualizer.NASA_API
 
             foreach (var neo in resp.near_earth_objects)
             {
+                var rndImgIdx = (int)neo.absolute_magnitude_h % ImagePaths.Count; //API doesnt give images so have to select one at random
                 list.Add(new NEOModel()
                 {
                     Id = neo.id,
@@ -54,6 +61,7 @@ namespace NeoVisualizer.NASA_API
                     Hazardous = neo.is_potentially_hazardous_asteroid,
                     DiameterMin = neo.estimated_diameter.kilometers.estimated_diameter_min * 10,
                     DiameterMax = neo.estimated_diameter.kilometers.estimated_diameter_max * 10,
+                    ImagePath = ImagePaths[rndImgIdx],
                 });
             }
 

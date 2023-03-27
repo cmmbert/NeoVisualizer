@@ -12,41 +12,31 @@ namespace NeoVisualizer.Viewmodels
 {
     public class NEOvm : ObservableObject
     {
+        public RelayCommand<int> GetPage { get; set; }
 
+        private int currentPage = 0;
+        public int CurrentPage
+        {
+            get
+            {
+                return currentPage;
+            }
+            private set
+            {
+                currentPage = value;
+                OnPropertyChanged(nameof(CurrentPage));
+                OnPropertyChanged(nameof(NextPage));
+                OnPropertyChanged(nameof(PreviousPage));
+            }
+        }
+        public int NextPage => CurrentPage + 1;
+        public int PreviousPage => CurrentPage - 1;
         public NEOvm()
         {
-            ImagePaths.Add("/Resources/Images/asteroid0.jpg");
-            ImagePaths.Add("/Resources/Images/asteroid1.jpg");
-            ImagePaths.Add("/Resources/Images/asteroid2.jpg");
-            AddNewCommand = new RelayCommand(AddNew);
-
-            NeoList.Add(new NEOModel()
-            {
-                NameLimited = "test",
-                Name = "test 65151",
-                Id = "61565165",
-                Magnitude = 15,
-                Hazardous = true,
-                FirstObserved = DateTime.Now,
-                LastObserved = DateTime.Now,
-                DiameterMin = 15,
-                DiameterMax = 50,
-                ImagePath = ImagePaths[0]
-            });
-            NeoList.Add(new NEOModel()
-            {
-                NameLimited = "test2",
-                Name = "test 65151",
-                Id = "61565165",
-                Magnitude = 15,
-                Hazardous = false,
-                FirstObserved = DateTime.Now,
-                LastObserved = DateTime.Now,
-                DiameterMin = 75,
-                DiameterMax = 150,
-                ImagePath = ImagePaths[1]
-            });
+            GetPage = new RelayCommand<int>(GetNeos);
         }
+
+        public ObservableCollection<NEOModel> neoList = new ObservableCollection<NEOModel>();
 
         public ObservableCollection<NEOModel> NeoList
         {
@@ -57,19 +47,11 @@ namespace NeoVisualizer.Viewmodels
                 OnPropertyChanged(nameof(NeoList));
             }
         }
-        public ObservableCollection<NEOModel> neoList = new ObservableCollection<NEOModel>();
 
-
-        
-        public List<string> ImagePaths { get; set; } = new List<string>();
-
-        public RelayCommand AddNewCommand { get; set; }
-
-
-        public async void AddNew()
+        public async void GetNeos(int page)
         {
-            NeoList = new ObservableCollection<NEOModel>(await NASA_API.NasaNeoApi.GetNEOsAsync(01));
-
+            NeoList = new ObservableCollection<NEOModel>(await NASA_API.NasaNeoApi.GetNEOsAsync(page));
+            CurrentPage = page;
         }
     }
 }
