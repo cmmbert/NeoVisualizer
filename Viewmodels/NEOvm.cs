@@ -21,7 +21,7 @@ namespace NeoVisualizer.Viewmodels
             {
                 return currentPage;
             }
-            private set
+            set
             {
                 currentPage = value;
                 OnPropertyChanged(nameof(CurrentPage));
@@ -34,9 +34,18 @@ namespace NeoVisualizer.Viewmodels
         {
             get
             {
-                if (CurrentPage - 1 < 0) 
+                if (CurrentPage - 1 < 0)
                     return 0;
                 return CurrentPage - 1;
+            }
+        }
+        private bool loading;
+        public bool Loading { 
+            get => loading;
+            private set
+            {
+                loading = value;
+                OnPropertyChanged(nameof(Loading));
             }
         }
 
@@ -59,7 +68,9 @@ namespace NeoVisualizer.Viewmodels
 
         public async void GetNeos(int page)
         {
+            Loading = true;
             NeoList = new ObservableCollection<NEOModel>(await NASA_API.NasaNeoApi.GetNEOsAsync(page));
+            Loading = false;
             CurrentPage = page;
         }
     }
