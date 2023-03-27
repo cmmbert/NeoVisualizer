@@ -30,7 +30,16 @@ namespace NeoVisualizer.Viewmodels
             }
         }
         public int NextPage => CurrentPage + 1;
-        public int PreviousPage => CurrentPage - 1;
+        public int PreviousPage
+        {
+            get
+            {
+                if (CurrentPage - 1 < 0) 
+                    return 0;
+                return CurrentPage - 1;
+            }
+        }
+
         public NEOvm()
         {
             GetPage = new RelayCommand<int>(GetNeos);
