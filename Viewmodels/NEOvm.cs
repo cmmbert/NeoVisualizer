@@ -14,6 +14,15 @@ namespace NeoVisualizer.Viewmodels
     {
         public RelayCommand<int> GetPage { get; set; }
 
+        public int RequestedPage
+        {
+            get { 
+                return CurrentPage; }
+            set { 
+                GetNeos(value); 
+            }
+        }
+
         private int currentPage = 0;
         public int CurrentPage
         {
@@ -27,6 +36,7 @@ namespace NeoVisualizer.Viewmodels
                 OnPropertyChanged(nameof(CurrentPage));
                 OnPropertyChanged(nameof(NextPage));
                 OnPropertyChanged(nameof(PreviousPage));
+                OnPropertyChanged(nameof(RequestedPage));
             }
         }
         public int NextPage => CurrentPage + 1;

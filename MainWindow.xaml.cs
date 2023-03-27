@@ -26,5 +26,12 @@ namespace NeoVisualizer
             InitializeComponent();
         }
 
+        void txtPageKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                NextPageBtn.Focus(); //Force removes focus from textbox to trigger command
+            }
+        }
     }
 }

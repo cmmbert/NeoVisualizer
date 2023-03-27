@@ -63,7 +63,7 @@
 
         <Grid Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="White">
             <Button IsEnabled="{Binding Loading, Converter={StaticResource BooleanInverterConverter}}" MinWidth="120" HorizontalAlignment="Right" Content="Next>" Name="NextPageBtn" CommandParameter="{Binding NextPage}" Command="{Binding GetPage}"/>
-            <TextBox Visibility="{Binding Loading, Converter={StaticResource BooleanToInvisibilityConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding CurrentPage}" FontSize="30" />
+            <TextBox Name="txtPage" PreviewKeyUp="txtPageKeyUp" Visibility="{Binding Loading, Converter={StaticResource BooleanToInvisibilityConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding RequestedPage}" FontSize="30" />
             <Label Visibility="{Binding Loading, Converter={StaticResource BooleanToVisibilityConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Loading..." FontSize="30" />
             <Button IsEnabled="{Binding Loading, Converter={StaticResource BooleanInverterConverter}}" MinWidth="120" HorizontalAlignment="Left" Content="&lt;Previous" Name="PrevPageBtn" CommandParameter="{Binding PreviousPage}" Command="{Binding GetPage}"/>
         </Grid>

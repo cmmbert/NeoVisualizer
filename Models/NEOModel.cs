@@ -9,10 +9,10 @@ namespace NeoVisualizer.Models
 {
     public class NEOModel : ObservableObject
     {
-        private string name;
+        private string? name;
 
-        public string Id { get; set; }
-        public string Name
+        public string? Id { get; set; }
+        public string? Name
         {
             get => name; set
             {
