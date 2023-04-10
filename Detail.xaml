@@ -53,7 +53,7 @@
             </StackPanel>
         </StackPanel>
 
-        <Grid Margin="10,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Top">
+        <Grid Margin="0,0,100,0" HorizontalAlignment="Right" VerticalAlignment="Top">
             <Ellipse Width="{Binding DiameterMax, Mode=OneWay}" Height="{Binding DiameterMax, Mode=OneWay}" Fill="White"></Ellipse>
             <Ellipse Width="{Binding DiameterMin, Mode=OneWay}" Height="{Binding DiameterMin, Mode=OneWay}" Fill="red"></Ellipse>
         </Grid>
