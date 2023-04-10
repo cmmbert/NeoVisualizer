@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,14 @@ namespace NeoVisualizer.Viewmodels
 {
     public class NEODetail : ObservableObject
     {
+        public RelayCommand GoToDetail { get; set; }
+
+
+        public NEODetail()
+        {
+            GoToDetail = new RelayCommand(NavigateToDetail);
+        }
+
         private string? name;
 
         public string? Id { get; set; }
@@ -26,13 +35,21 @@ namespace NeoVisualizer.Viewmodels
         public string? ImagePath { get; set; }
         public double Magnitude { get; set; }
 
-        public double DiameterMin { get; set; }
-        public double DiameterMax { get; set; }
+        public double DiameterMin { get; set; } = 100;
+        public double DiameterMax { get; set; } = 200;
 
         public bool Hazardous { get; set; }
 
         public DateTime FirstObserved { get; set; }
         public DateTime LastObserved { get; set; }
 
+
+
+        public void NavigateToDetail()
+        {
+            Detail detail = new Detail();
+            detail.DataContext = this;
+            detail.Show();
+        }
     }
 }

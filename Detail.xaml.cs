@@ -21,7 +21,7 @@ namespace NeoVisualizer
     /// </summary>
     public partial class Detail : Window
     {
-        public Detail(NEODetail detail)
+        public Detail()
         {
             InitializeComponent();
         }

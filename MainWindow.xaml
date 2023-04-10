@@ -24,26 +24,26 @@
     <Grid>
         <Grid.Resources>
             <DataTemplate x:Key="NEOListItem">
-                <Grid Background="{Binding Hazardous, Converter={StaticResource HazardousColorConverter}}">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,10,0,10">
-
-                        <Grid Background="Black">
+                <Button HorizontalAlignment="Left" 
+                        Command="{Binding GoToDetail}"
+                        HorizontalContentAlignment="Left"
+                        MinWidth="800"
+                        Background="{Binding Hazardous, Converter={StaticResource HazardousColorConverter}}"
+                        >
+                    <Grid HorizontalAlignment="Left">
+                        <StackPanel 
+                        Orientation="Horizontal" 
+                        HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,10,0,10"
+                        >
+                            <Grid Background="Black">
                             <Image Height="188" Width="188" VerticalAlignment="Center" Source="{Binding ImagePath}"/>
                         </Grid>
                         <StackPanel VerticalAlignment="Center">
                             <Label Content="{Binding NameLimited}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="22"/>
-                            <Label Content="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="Magnitude: " HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                                <Label Content="{Binding Magnitude}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                            </StackPanel>
+
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="First observed" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                                <Label Content="{Binding FirstObserved, Converter={StaticResource DateConverter} }" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="Last observed" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                                <Label Content="{Binding LastObserved, Converter={StaticResource DateConverter} }" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                                <Label Content="{Binding FirstObserved, Converter={StaticResource DateConverter}}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="Hazardous" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
@@ -51,12 +51,13 @@
                             </StackPanel>
                         </StackPanel>
                         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Ellipse Width="{Binding DiameterMax, Mode=OneWay}" Height="{Binding DiameterMax, Mode=OneWay}" Fill="White"></Ellipse>
-                            <Ellipse Width="{Binding DiameterMin, Mode=OneWay}" Height="{Binding DiameterMin, Mode=OneWay}" Fill="red"></Ellipse>
-                                </Grid>
+                            <Ellipse Width="{Binding DiameterMax, Mode=OneWay}" Height="{Binding DiameterMax, Mode=OneWay}" Fill="White"/>
+                            <Ellipse Width="{Binding DiameterMin, Mode=OneWay}" Height="{Binding DiameterMin, Mode=OneWay}" Fill="red"/>
+                        </Grid>
 
-                    </StackPanel>
-                </Grid>
+                        </StackPanel>
+                    </Grid>
+                </Button>
             </DataTemplate>
         </Grid.Resources>
         <ListView ScrollViewer.CanContentScroll="False" ItemsSource="{Binding NeoList}" ItemTemplate="{StaticResource ResourceKey=NEOListItem}" HorizontalContentAlignment="Stretch" >
@@ -64,7 +65,10 @@
 
 
         <Grid Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="White">
-            <Button IsEnabled="{Binding Loading, Converter={StaticResource BooleanInverterConverter}}" MinWidth="120" HorizontalAlignment="Right" Content="Next>" Name="NextPageBtn" CommandParameter="{Binding NextPage}" Command="{Binding GetPage}"/>
+            <Button IsEnabled="{Binding Loading, Converter={StaticResource BooleanInverterConverter}}" 
+                    MinWidth="120" HorizontalAlignment="Right" Content="Next>" 
+                    Name="NextPageBtn" 
+                    CommandParameter="{Binding NextPage}" Command="{Binding GetPage}"/>
             <TextBox Name="txtPage" PreviewKeyUp="TxtPageKeyUp" Visibility="{Binding Loading, Converter={StaticResource BooleanToInvisibilityConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding RequestedPage}" FontSize="30" />
             <Label Visibility="{Binding Loading, Converter={StaticResource BooleanToVisibilityConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Loading..." FontSize="30" />
             <Button IsEnabled="{Binding Loading, Converter={StaticResource BooleanInverterConverter}}" MinWidth="120" HorizontalAlignment="Left" Content="&lt;Previous" Name="PrevPageBtn" CommandParameter="{Binding PreviousPage}" Command="{Binding GetPage}"/>

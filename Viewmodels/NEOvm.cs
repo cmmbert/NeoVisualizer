@@ -13,7 +13,6 @@ namespace NeoVisualizer.Viewmodels
     public class NEOvm : ObservableObject
     {
         public RelayCommand<int> GetPage { get; set; }
-        public RelayCommand<NEODetail> GoToDetail { get; set; }
 
         public int RequestedPage
         {
@@ -63,7 +62,6 @@ namespace NeoVisualizer.Viewmodels
         public NEOvm()
         {
             GetPage = new RelayCommand<int>(GetNeos);
-            GoToDetail = new RelayCommand<NEODetail>(NavigateToDetail);
             GetNeos(0);
 
         }
@@ -88,11 +86,5 @@ namespace NeoVisualizer.Viewmodels
             CurrentPage = page;
         }
 
-        public void NavigateToDetail(NEODetail details)
-        {
-            Detail detail = new Detail(details);
-            detail.DataContext = details;
-            detail.Show();
-        }
     }
 }
