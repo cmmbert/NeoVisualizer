@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using NeoVisualizer.NASA_API;
 using NeoVisualizer.Viewmodels;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace NeoVisualizer.Viewmodels
     public class NEOvm : ObservableObject
     {
         public RelayCommand<int> GetPage { get; set; }
+        public RelayCommand SwitchDataSource { get; set; }
 
         public int RequestedPage
         {
@@ -59,11 +61,26 @@ namespace NeoVisualizer.Viewmodels
             }
         }
 
+        private Source dataSource;
+        public Source DataSource
+        {
+            get => dataSource;
+            private set
+            {
+                dataSource = value;
+                OnPropertyChanged(nameof(DataSource));
+            }
+        }
+        public enum Source
+        {
+            Offline,
+            Online
+        }
         public NEOvm()
         {
             GetPage = new RelayCommand<int>(GetNeos);
             GetNeos(0);
-
+            SwitchDataSource = new RelayCommand(CycleSources);
         }
 
         public ObservableCollection<NEODetail> neoList = new();
@@ -81,10 +98,34 @@ namespace NeoVisualizer.Viewmodels
         public async void GetNeos(int page)
         {
             Loading = true;
-            NeoList = new ObservableCollection<NEODetail>(await NASA_API.NasaNeoApi.GetNEOsAsync(page));
+            NeoList = new ObservableCollection<NEODetail>();
+            switch (DataSource)
+            {
+                case Source.Offline:
+                    NeoList = new ObservableCollection<NEODetail>(await OfflineRepository.GetNEOsAsync(page));
+                    break;
+                case Source.Online:
+                    NeoList = new ObservableCollection<NEODetail>(await NASA_API.NasaNeoApi.GetNEOsAsync(page));
+                    break;
+                default:
+                    break;
+            }
+
             Loading = false;
             CurrentPage = page;
         }
 
+
+        public void CycleSources()
+        {
+            int currentDataSourceIdx = (int)DataSource;
+            ++currentDataSourceIdx;
+            if (currentDataSourceIdx >= Enum.GetNames(typeof(Source)).Length)
+                DataSource = 0;
+            else
+                DataSource = (Source)currentDataSourceIdx;
+
+            GetNeos(CurrentPage);
+        }
     }
 }

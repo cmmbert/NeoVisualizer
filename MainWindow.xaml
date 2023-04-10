@@ -62,8 +62,11 @@
         </Grid.Resources>
         <ListView ScrollViewer.CanContentScroll="False" ItemsSource="{Binding NeoList}" ItemTemplate="{StaticResource ResourceKey=NEOListItem}" HorizontalContentAlignment="Stretch" >
         </ListView>
+        
 
-
+        <Grid Width="60" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Button IsEnabled="{Binding Loading, Converter={StaticResource BooleanInverterConverter}}" Content="{Binding DataSource}" Command="{Binding SwitchDataSource}"></Button>
+        </Grid>
         <Grid Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="White">
             <Button IsEnabled="{Binding Loading, Converter={StaticResource BooleanInverterConverter}}" 
                     MinWidth="120" HorizontalAlignment="Right" Content="Next>" 
