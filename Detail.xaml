@@ -52,10 +52,21 @@
                 </StackPanel>
             </StackPanel>
         </StackPanel>
+        <Border BorderBrush="Black" BorderThickness="2" Margin="400,10,10,10"></Border>
 
-        <Grid Margin="0,0,100,0" HorizontalAlignment="Right" VerticalAlignment="Top">
+        <Grid Margin="400,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Ellipse Width="{Binding DiameterMax, Mode=OneWay}" Height="{Binding DiameterMax, Mode=OneWay}" Fill="White"></Ellipse>
-            <Ellipse Width="{Binding DiameterMin, Mode=OneWay}" Height="{Binding DiameterMin, Mode=OneWay}" Fill="red"></Ellipse>
+            <Ellipse Width="{Binding DiameterMin, Mode=OneWay}" Height="{Binding DiameterMin, Mode=OneWay}" Fill="Black"></Ellipse>
         </Grid>
+        <StackPanel Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Minimum estimated size: " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
+                <Ellipse Width="50" Height="50" Fill="Black"></Ellipse>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Maximum estimated size:" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
+                <Ellipse Width="50" Height="50" Fill="White"></Ellipse>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

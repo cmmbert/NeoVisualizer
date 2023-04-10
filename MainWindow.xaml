@@ -50,10 +50,10 @@
                                 <Label Content="{Binding Hazardous, Converter={StaticResource BooleanConverter}}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
                             </StackPanel>
                         </StackPanel>
-                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <!--<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Ellipse Width="{Binding DiameterMax, Mode=OneWay}" Height="{Binding DiameterMax, Mode=OneWay}" Fill="White"/>
                             <Ellipse Width="{Binding DiameterMin, Mode=OneWay}" Height="{Binding DiameterMin, Mode=OneWay}" Fill="red"/>
-                        </Grid>
+                        </Grid>-->
 
                         </StackPanel>
                     </Grid>
