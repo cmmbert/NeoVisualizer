@@ -31,4 +31,8 @@
     <Resource Include="Resources\Images\asteroid2.jpeg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>

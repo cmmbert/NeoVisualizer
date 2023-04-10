@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NeoVisualizer.Models
+namespace NeoVisualizer.Viewmodels
 {
-    public class NEOModel : ObservableObject
+    public class NEODetail : ObservableObject
     {
         private string? name;
 

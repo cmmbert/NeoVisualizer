@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NeoVisualizer.Viewmodels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,23 +17,13 @@ using System.Windows.Shapes;
 namespace NeoVisualizer
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Detail.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Detail : Window
     {
-
-        public MainWindow()
+        public Detail(NEODetail detail)
         {
             InitializeComponent();
         }
-
-        void TxtPageKeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                NextPageBtn.Focus(); //Force removes focus from textbox to trigger command
-            }
-        }
-
     }
 }

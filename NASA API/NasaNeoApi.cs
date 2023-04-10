@@ -1,4 +1,4 @@
-﻿using NeoVisualizer.Models;
+﻿using NeoVisualizer.Viewmodels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -23,7 +23,7 @@ namespace NeoVisualizer.NASA_API
             "/Resources/Images/asteroid1.jpg",
             "/Resources/Images/asteroid2.jpeg",
         };
-        public static async Task<List<NEOModel>> GetNEOsAsync(int pageNumber)
+        public static async Task<List<NEODetail>> GetNEOsAsync(int pageNumber)
         {
             HttpClient client = new()
             {
@@ -45,14 +45,14 @@ namespace NeoVisualizer.NASA_API
             }
             
 
-            var list = new List<NEOModel>();
+            var list = new List<NEODetail>();
 
             if (resp == null) return list;
 
             foreach (var neo in resp.near_earth_objects)
             {
                 var rndImgIdx = (int)neo.absolute_magnitude_h % ImagePaths.Count; //API doesnt give images so have to select one at random
-                list.Add(new NEOModel()
+                list.Add(new NEODetail()
                 {
                     Id = neo.id,
                     NameLimited = neo.name_limited,

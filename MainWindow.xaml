@@ -26,6 +26,7 @@
             <DataTemplate x:Key="NEOListItem">
                 <Grid Background="{Binding Hazardous, Converter={StaticResource HazardousColorConverter}}">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,10,0,10">
+
                         <Grid Background="Black">
                             <Image Height="188" Width="188" VerticalAlignment="Center" Source="{Binding ImagePath}"/>
                         </Grid>
@@ -52,12 +53,13 @@
                         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Ellipse Width="{Binding DiameterMax, Mode=OneWay}" Height="{Binding DiameterMax, Mode=OneWay}" Fill="White"></Ellipse>
                             <Ellipse Width="{Binding DiameterMin, Mode=OneWay}" Height="{Binding DiameterMin, Mode=OneWay}" Fill="red"></Ellipse>
-                        </Grid>
+                                </Grid>
+
                     </StackPanel>
                 </Grid>
             </DataTemplate>
         </Grid.Resources>
-        <ListView ScrollViewer.CanContentScroll="False" ItemsSource="{Binding NeoList}" ItemTemplate="{StaticResource ResourceKey=NEOListItem}" HorizontalContentAlignment="Stretch">
+        <ListView ScrollViewer.CanContentScroll="False" ItemsSource="{Binding NeoList}" ItemTemplate="{StaticResource ResourceKey=NEOListItem}" HorizontalContentAlignment="Stretch" >
         </ListView>
 
 

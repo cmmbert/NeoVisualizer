@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using NeoVisualizer.Models;
+using NeoVisualizer.Viewmodels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,6 +13,7 @@ namespace NeoVisualizer.Viewmodels
     public class NEOvm : ObservableObject
     {
         public RelayCommand<int> GetPage { get; set; }
+        public RelayCommand<NEODetail> GoToDetail { get; set; }
 
         public int RequestedPage
         {
@@ -62,11 +63,14 @@ namespace NeoVisualizer.Viewmodels
         public NEOvm()
         {
             GetPage = new RelayCommand<int>(GetNeos);
+            GoToDetail = new RelayCommand<NEODetail>(NavigateToDetail);
+            GetNeos(0);
+
         }
 
-        public ObservableCollection<NEOModel> neoList = new();
+        public ObservableCollection<NEODetail> neoList = new();
 
-        public ObservableCollection<NEOModel> NeoList
+        public ObservableCollection<NEODetail> NeoList
         {
             get { return neoList; }
             set
@@ -79,9 +83,16 @@ namespace NeoVisualizer.Viewmodels
         public async void GetNeos(int page)
         {
             Loading = true;
-            NeoList = new ObservableCollection<NEOModel>(await NASA_API.NasaNeoApi.GetNEOsAsync(page));
+            NeoList = new ObservableCollection<NEODetail>(await NASA_API.NasaNeoApi.GetNEOsAsync(page));
             Loading = false;
             CurrentPage = page;
+        }
+
+        public void NavigateToDetail(NEODetail details)
+        {
+            Detail detail = new Detail(details);
+            detail.DataContext = details;
+            detail.Show();
         }
     }
 }
