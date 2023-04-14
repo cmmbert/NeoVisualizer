@@ -48,7 +48,7 @@ namespace NeoVisualizer.Viewmodels
         {
             public DateTime ApproachData { get; set; }
             public float Velocity { get; set; }
-            public float Distance { get; set; }
+            public double Distance { get; set; }
         }
 
         public void NavigateToDetail()

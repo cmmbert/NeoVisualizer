@@ -53,7 +53,7 @@ namespace NeoVisualizer.NASA_API
                         {
                             ApproachData = DateTime.Parse(approach.close_approach_date_full, new CultureInfo("en-US")),
                             Velocity = approach.relative_velocity.kilometers_per_hour,
-                            Distance = approach.miss_distance.kilometers
+                            Distance = Convert.ToDouble(approach.miss_distance.kilometers.Replace('.', ','))
                         });
                     }
                     list.Add(newNeo);

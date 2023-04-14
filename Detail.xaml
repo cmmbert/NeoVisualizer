@@ -19,21 +19,10 @@
         <local:DateTimeConverter x:Key="DateConverter"/>
         <local:BooleanConverter x:Key="BooleanConverter"/>
         <local:HazardousColorConverter x:Key="HazardousColorConverter"/>
-        <local:BooleanInverterConverter x:Key="BooleanInverterConverter"/>
-        <local:BooleanToInvisibilityConverter x:Key="BooleanToInvisibilityConverter"/>
-        <con:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-
+        <local:FloatToDistanceConverter x:Key="DistanceConverter"/>
+        <local:FloatToSpeedConverter x:Key="SpeedConverter"/>
     </Window.Resources>
     <Grid Background="{Binding Hazardous, Converter={StaticResource HazardousColorConverter}}">
-        <Grid.Resources>
-            <DataTemplate x:Key="CloseApproachListItem">
-                <StackPanel Orientation="Horizontal">
-                    <DataGridCell Content="{Binding ApproachData}"></DataGridCell>
-                    <DataGridCell Content="{Binding Velocity}"></DataGridCell>
-                    <DataGridCell Content="{Binding Distance}"></DataGridCell>
-                </StackPanel>
-            </DataTemplate>
-        </Grid.Resources>
         <Grid VerticalAlignment="Stretch" Height="Auto">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
@@ -70,9 +59,23 @@
             </StackPanel>
             <Label FontSize="28" Foreground="White" Content="Close Approaches:" Margin="10,200,10,10"></Label>
             <DataGrid Width="360" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,240,10,10"
-                ScrollViewer.CanContentScroll="True"  ItemsSource="{Binding CloseApproaches}" ItemTemplate="{StaticResource ResourceKey=CloseApproachListItem}">
+                ScrollViewer.CanContentScroll="True" ItemsSource="{Binding CloseApproaches}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    
+                    <DataGridTextColumn Header="Approach date" Binding="{Binding ApproachData, Converter={StaticResource DateConverter}}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Relative velocity" Binding="{Binding Velocity, Converter={StaticResource SpeedConverter}}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Right" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Distance from Earth" Binding="{Binding Distance, Converter={StaticResource DistanceConverter}}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Right" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
 

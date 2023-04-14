@@ -89,4 +89,32 @@ namespace NeoVisualizer
             throw new NotImplementedException();
         }
     }
+
+    internal class FloatToSpeedConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var v = Math.Round(((float)value), 2).ToString();
+            return v + "km/h";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    internal class FloatToDistanceConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var v = Math.Round(((double)value), 2).ToString();
+            return v + "km";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

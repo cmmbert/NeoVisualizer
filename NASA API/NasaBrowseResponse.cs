@@ -117,7 +117,7 @@ namespace NeoVisualizer.NASA_API
         {
             public float astronomical { get; set; }
             public float lunar { get; set; }
-            public float kilometers { get; set; }
+            public string kilometers { get; set; }
             public float miles { get; set; }
         }
 
