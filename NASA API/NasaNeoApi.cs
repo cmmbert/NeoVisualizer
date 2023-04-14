@@ -52,7 +52,7 @@ namespace NeoVisualizer.NASA_API
             foreach (var neo in resp.near_earth_objects)
             {
                 var rndImgIdx = (int)neo.absolute_magnitude_h % ImagePaths.Count; //API doesnt give images so have to select one at random
-                list.Add(new NEODetail()
+                var newNeo = new NEODetail()
                 {
                     Id = neo.id,
                     NameLimited = neo.name_limited,
@@ -64,7 +64,17 @@ namespace NeoVisualizer.NASA_API
                     DiameterMin = neo.estimated_diameter.kilometers.estimated_diameter_min * 10,
                     DiameterMax = neo.estimated_diameter.kilometers.estimated_diameter_max * 10,
                     ImagePath = ImagePaths[rndImgIdx],
-                });
+                };
+                foreach (var approach in neo.close_approach_data)
+                {
+                    newNeo.CloseApproaches.Add(new NEODetail.CloseApproach()
+                    {
+                        ApproachData = DateTime.Parse(approach.close_approach_date_full, new CultureInfo("en-US")),
+                        Velocity = approach.relative_velocity.kilometers_per_hour,
+                        Distance = approach.miss_distance.kilometers
+                    });
+                }
+                list.Add(newNeo);
             }
 
 

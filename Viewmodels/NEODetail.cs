@@ -43,7 +43,13 @@ namespace NeoVisualizer.Viewmodels
         public DateTime FirstObserved { get; set; }
         public DateTime LastObserved { get; set; }
 
-
+        public List<CloseApproach> CloseApproaches { get; set; } = new List<CloseApproach>();
+        public class CloseApproach
+        {
+            public DateTime ApproachData { get; set; }
+            public float Velocity { get; set; }
+            public float Distance { get; set; }
+        }
 
         public void NavigateToDetail()
         {

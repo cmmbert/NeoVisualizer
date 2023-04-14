@@ -108,17 +108,17 @@ namespace NeoVisualizer.NASA_API
 
         public class Relative_Velocity
         {
-            public string kilometers_per_second { get; set; }
-            public string kilometers_per_hour { get; set; }
-            public string miles_per_hour { get; set; }
+            public float kilometers_per_second { get; set; }
+            public float kilometers_per_hour { get; set; }
+            public float miles_per_hour { get; set; }
         }
 
         public class Miss_Distance
         {
-            public string astronomical { get; set; }
-            public string lunar { get; set; }
-            public string kilometers { get; set; }
-            public string miles { get; set; }
+            public float astronomical { get; set; }
+            public float lunar { get; set; }
+            public float kilometers { get; set; }
+            public float miles { get; set; }
         }
 
     }

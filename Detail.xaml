@@ -8,7 +8,9 @@
       xmlns:vms="clr-namespace:NeoVisualizer.Viewmodels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Detail">
+      Title="Detail"
+      MinWidth="1000"
+        MinHeight="650">
     <Window.DataContext>
         <vms:NEODetail/>
     </Window.DataContext>
@@ -23,42 +25,56 @@
 
     </Window.Resources>
     <Grid Background="{Binding Hazardous, Converter={StaticResource HazardousColorConverter}}">
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,10">
-            <Grid Background="Black">
-                <Image Height="188" Width="188" VerticalAlignment="Center" Source="{Binding ImagePath}"/>
-            </Grid>
-            <StackPanel VerticalAlignment="Center">
-                <Label Content="{Binding NameLimited}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="22"/>
-                <Label Content="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+        <Grid.Resources>
+            <DataTemplate x:Key="CloseApproachListItem">
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Id: " HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                    <Label Content="{Binding Id}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                    <Label Content="{Binding Velocity}"></Label>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="Magnitude: " HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                    <Label Content="{Binding Magnitude}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="First observed" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                    <Label Content="{Binding FirstObserved, Converter={StaticResource DateConverter} }" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="Last observed" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                    <Label Content="{Binding LastObserved, Converter={StaticResource DateConverter} }" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="Hazardous" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                    <Label Content="{Binding Hazardous, Converter={StaticResource BooleanConverter}}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+            </DataTemplate>
+        </Grid.Resources>
+        <Grid VerticalAlignment="Stretch" Height="Auto">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,10">
+                <Grid Background="Black">
+                    <Image Height="188" Width="188" VerticalAlignment="Center" Source="{Binding ImagePath}"/>
+                </Grid>
+                <StackPanel VerticalAlignment="Center">
+                    <Label Content="{Binding NameLimited}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="22"/>
+                    <Label Content="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Id: " HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                        <Label Content="{Binding Id}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Magnitude: " HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                        <Label Content="{Binding Magnitude}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="First observed" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                        <Label Content="{Binding FirstObserved, Converter={StaticResource DateConverter} }" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Last observed" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                        <Label Content="{Binding LastObserved, Converter={StaticResource DateConverter} }" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Hazardous" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                        <Label Content="{Binding Hazardous, Converter={StaticResource BooleanConverter}}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
-        </StackPanel>
-        <Border BorderBrush="Black" BorderThickness="2" Margin="400,10,10,10"></Border>
+            
+            <ListView Width="360" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,220,10,10"
+                ScrollViewer.CanContentScroll="True" ItemsSource="{Binding CloseApproaches}" ItemTemplate="{StaticResource ResourceKey=CloseApproachListItem}">
+            </ListView>
 
-        <Grid Margin="400,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Ellipse Width="{Binding DiameterMax, Mode=OneWay}" Height="{Binding DiameterMax, Mode=OneWay}" Fill="White"></Ellipse>
-            <Ellipse Width="{Binding DiameterMin, Mode=OneWay}" Height="{Binding DiameterMin, Mode=OneWay}" Fill="Black"></Ellipse>
+
         </Grid>
-        <StackPanel Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+        <Border BorderBrush="Black" BorderThickness="2" Margin="400,10,10,10"></Border>
+        <StackPanel Margin="20" HorizontalAlignment="Right" VerticalAlignment="Bottom">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Minimum estimated size: " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
                 <Ellipse Width="50" Height="50" Fill="Black"></Ellipse>
@@ -68,5 +84,9 @@
                 <Ellipse Width="50" Height="50" Fill="White"></Ellipse>
             </StackPanel>
         </StackPanel>
+        <Grid Margin="400,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Ellipse Width="{Binding DiameterMax, Mode=OneWay}" Height="{Binding DiameterMax, Mode=OneWay}" Fill="White"></Ellipse>
+            <Ellipse Width="{Binding DiameterMin, Mode=OneWay}" Height="{Binding DiameterMin, Mode=OneWay}" Fill="Black"></Ellipse>
+        </Grid>
     </Grid>
 </Window>
