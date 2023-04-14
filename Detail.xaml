@@ -28,7 +28,9 @@
         <Grid.Resources>
             <DataTemplate x:Key="CloseApproachListItem">
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="{Binding Velocity}"></Label>
+                    <DataGridCell Content="{Binding ApproachData}"></DataGridCell>
+                    <DataGridCell Content="{Binding Velocity}"></DataGridCell>
+                    <DataGridCell Content="{Binding Distance}"></DataGridCell>
                 </StackPanel>
             </DataTemplate>
         </Grid.Resources>
@@ -66,10 +68,13 @@
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
-            
-            <ListView Width="360" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,220,10,10"
-                ScrollViewer.CanContentScroll="True" ItemsSource="{Binding CloseApproaches}" ItemTemplate="{StaticResource ResourceKey=CloseApproachListItem}">
-            </ListView>
+            <Label FontSize="28" Foreground="White" Content="Close Approaches:" Margin="10,200,10,10"></Label>
+            <DataGrid Width="360" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,240,10,10"
+                ScrollViewer.CanContentScroll="True"  ItemsSource="{Binding CloseApproaches}" ItemTemplate="{StaticResource ResourceKey=CloseApproachListItem}">
+                <DataGrid.Columns>
+                    
+                </DataGrid.Columns>
+            </DataGrid>
 
 
         </Grid>
