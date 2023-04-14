@@ -38,22 +38,18 @@
                             <Grid Background="Black">
                                 <Image Height="188" Width="188" VerticalAlignment="Center" Source="{Binding ImagePath}"/>
                             </Grid>
-                        <StackPanel VerticalAlignment="Center">
-                            <Label Content="{Binding NameLimited}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="22"/>
+                            <StackPanel VerticalAlignment="Center">
+                                <Label Content="{Binding NameLimited}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="22"/>
 
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="First observed" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                                <Label Content="{Binding FirstObserved, Converter={StaticResource DateConverter}}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="First observed" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                                    <Label Content="{Binding FirstObserved, Converter={StaticResource DateConverter}}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Hazardous" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                                    <Label Content="{Binding Hazardous, Converter={StaticResource BooleanConverter}}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+                                </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="Hazardous" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                                <Label Content="{Binding Hazardous, Converter={StaticResource BooleanConverter}}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                            </StackPanel>
-                        </StackPanel>
-                        <!--<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Ellipse Width="{Binding DiameterMax, Mode=OneWay}" Height="{Binding DiameterMax, Mode=OneWay}" Fill="White"/>
-                            <Ellipse Width="{Binding DiameterMin, Mode=OneWay}" Height="{Binding DiameterMin, Mode=OneWay}" Fill="red"/>
-                        </Grid>-->
 
                         </StackPanel>
                     </Grid>
