@@ -10,7 +10,7 @@
         Title="Near Earth Objects" Height="550" Width="800"
         >
     <Window.DataContext>
-        <vms:NEOvm/>
+        <vms:NEOvm/> 
     </Window.DataContext>
     <Window.Resources>
         <local:DateTimeConverter x:Key="DateConverter"/>
