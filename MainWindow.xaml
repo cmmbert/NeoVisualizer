@@ -36,8 +36,8 @@
                         HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,10,0,10"
                         >
                             <Grid Background="Black">
-                            <Image Height="188" Width="188" VerticalAlignment="Center" Source="{Binding ImagePath}"/>
-                        </Grid>
+                                <Image Height="188" Width="188" VerticalAlignment="Center" Source="{Binding ImagePath}"/>
+                            </Grid>
                         <StackPanel VerticalAlignment="Center">
                             <Label Content="{Binding NameLimited}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="22"/>
 

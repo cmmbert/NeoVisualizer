@@ -19,9 +19,9 @@ namespace NeoVisualizer.NASA_API
 
         private static readonly List<string> ImagePaths = new()
         {
-            "/Resources/Images/asteroid0.jpg",
-            "/Resources/Images/asteroid1.jpg",
-            "/Resources/Images/asteroid2.jpeg",
+            "./Resources/Images/asteroid0.jpg",
+            "./Resources/Images/asteroid1.jpg",
+            "./Resources/Images/asteroid2.jpeg",
         };
         public static async Task<List<NEODetail>> GetNEOsAsync(int pageNumber)
         {
