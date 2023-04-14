@@ -23,7 +23,7 @@ namespace NeoVisualizer.NASA_API
             var list = new List<NEODetail>();
 
             pageNumber = Math.Clamp(pageNumber, 0, 2); //I only included 3 pages in the offline repo so I'm clamping the value
-            using (StreamReader r = new StreamReader("../../../Resources/DataSource/0" + pageNumber.ToString() + ".json"))
+            using (StreamReader r = new StreamReader("./Resources/DataSource/0" + pageNumber.ToString() + ".json"))
             {
                 string json = await r.ReadToEndAsync();
                 NasaBrowseResponse? resp = JsonConvert.DeserializeObject<NasaBrowseResponse>(json);
